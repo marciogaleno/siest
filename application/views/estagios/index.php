@@ -4,7 +4,7 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Listagem alunos</h3>
+                                    <h3 class="box-title">Listagem de estagios</h3>
                                     <div class="box-tools">
                                         <div class="input-group">
                                             <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Buscar"/>
@@ -17,18 +17,23 @@
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
                                         <tr>
-                                            <th>ID</th>
-                                            <th>Nome</th>
-                                            <th>Curso</th>
-                                            <th>Telefone</th>
-                                            <th>E-mail</th>
+                                            <th>Matrícula Aluno</th>
+                                            <th>Aluno</th> 
+                                            <th>Área</th>
+                                            <th>Supervisor professor</th>
+                                            <th>Supervisor Técnico</th>
+                                            <th>Data início</th>
+                                            <th>Data fim</th>
+                                                                                      
                                         </tr>
                                         <tr>
-                                            <td>183</td>
+                                            <td>SI1123001-21</td>
                                             <td>Márcio Vennan</td>
-                                            <td>Sistemas de informação</td>
-                                            <td>99999999</td>
-                                            <td>marciovennan@gmail.com</td>
+                                            <td>Desensolvimento</td>
+                                            <td>Mauro Silva</td>
+                                            <td>Charles</td>
+                                            <td>05-01-2015</td>
+                                            <td>05-06-2015</td>
                                         </tr>
                                     </table>
                                 </div><!-- /.box-body -->

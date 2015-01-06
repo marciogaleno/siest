@@ -4,7 +4,7 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Listagem alunos</h3>
+                                    <h3 class="box-title">Listagem de professores</h3>
                                     <div class="box-tools">
                                         <div class="input-group">
                                             <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Buscar"/>
@@ -20,15 +20,13 @@
                                             <th>ID</th>
                                             <th>Nome</th>
                                             <th>Curso</th>
-                                            <th>Telefone</th>
-                                            <th>E-mail</th>
+                                            <th>Matrícula</th>
                                         </tr>
                                         <tr>
                                             <td>183</td>
-                                            <td>Márcio Vennan</td>
+                                            <td>Mauro silva</td>
                                             <td>Sistemas de informação</td>
                                             <td>99999999</td>
-                                            <td>marciovennan@gmail.com</td>
                                         </tr>
                                     </table>
                                 </div><!-- /.box-body -->

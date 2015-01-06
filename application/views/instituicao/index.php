@@ -4,7 +4,7 @@
                         <div class="col-xs-12">
                             <div class="box">
                                 <div class="box-header">
-                                    <h3 class="box-title">Listagem alunos</h3>
+                                    <h3 class="box-title">Listagem de Instituições</h3>
                                     <div class="box-tools">
                                         <div class="input-group">
                                             <input type="text" name="table_search" class="form-control input-sm pull-right" style="width: 150px;" placeholder="Buscar"/>
@@ -19,16 +19,20 @@
                                         <tr>
                                             <th>ID</th>
                                             <th>Nome</th>
-                                            <th>Curso</th>
-                                            <th>Telefone</th>
+                                            <th>CNPJ</th>
+                                            <th>Representante</th>
+                                            <th>Endereço</th>
                                             <th>E-mail</th>
+                                            <th>Telegone</th>
                                         </tr>
                                         <tr>
                                             <td>183</td>
-                                            <td>Márcio Vennan</td>
-                                            <td>Sistemas de informação</td>
-                                            <td>99999999</td>
-                                            <td>marciovennan@gmail.com</td>
+                                            <td>AGED</td>
+                                            <td>Charles</td>
+                                            <td>989898989890/1223-23</td>
+                                            <td>Av. Castelo Branco</td>
+                                            <td>contao@aged.ma.gov.br</td>
+                                            <td>(98)9999-9999</td>
                                         </tr>
                                     </table>
                                 </div><!-- /.box-body -->

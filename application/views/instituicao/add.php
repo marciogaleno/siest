@@ -6,7 +6,7 @@
                             <!-- general form elements -->
                             <div class="box box-primary">
                                 <div class="box-header">
-                                    <h3 class="box-title">Cadastrar Aluno</h3>
+                                    <h3 class="box-title">Cadastrar Instituição</h3>
                                 </div><!-- /.box-header -->
                                 <!-- form start -->
                                 <form role="form">
@@ -16,34 +16,24 @@
                                             <input type="nome" class="form-control" id="exampleInputEmail1" placeholder="Nome">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Curso</label>
-                                            <select class="form-control">
-                                                <option>--</option>
-                                                <option>option 2</option>
-                                                <option>option 3</option>
-                                                <option>option 4</option>
-                                                <option>option 5</option>
-                                            </select>
+                                            <label for="exampleInputEmail1">Representante</label>
+                                            <input type="telefone" class="form-control" id="exampleInputEmail1" placeholder="Nome">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Telelefone</label>
-                                            <input type="telefone" class="form-control" id="exampleInputEmail1" placeholder="Telefone">
+                                            <label for="exampleInputEmail1">CNPJ</label>
+                                            <input type="telefone" class="form-control" id="exampleInputEmail1" placeholder="Nome">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Endereço</label>
+                                            <input type="telefone" class="form-control" id="exampleInputEmail1" placeholder="Nome">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">E-mail</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail">
+                                            <input type="telefone" class="form-control" id="exampleInputEmail1" placeholder="Nome">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">CPF</label>
-                                            <input type="cpf" class="form-control" id="exampleInputEmail1" placeholder="CPF">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">RG</label>
-                                            <input type="rg" class="form-control" id="exampleInputEmail1" placeholder="RG">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleInputEmail1">Data nascimento</label>
-                                            <input type="datanascimento" class="form-control" id="exampleInputEmail1" placeholder="Data nascimento">
+                                            <label for="exampleInputEmail1">Telegone</label>
+                                            <input type="telefone" class="form-control" id="exampleInputEmail1" placeholder="Nome">
                                         </div>
            
                                     </div><!-- /.box-body -->
