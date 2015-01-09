@@ -65,17 +65,18 @@ class Controller
     {
         Session::init();
         if (isset($message) && isset($options)){
-            $html = '<div class="'. $options['class'] . '">' . $message . '</div>';
-            setcookie('message', $html, time()+2, '/');
+             $html = '<div class="'. $options['class'] . '">' . $message . '</div>';
+             $_SESSION['message'] = $html;
          
         }
         
     }
   
     public function getFlash(){
-        if (isset ($_COOKIE['message'])){
-            echo $_COOKIE['message'];
-            $_COOKIE['message'] = null;
+        if (isset($_SESSION['message'])){
+ 
+            print_r($_SESSION['message']);
+           $_SESSION['message'] = null;
         }
         
         //unset($_SESSION['message']);

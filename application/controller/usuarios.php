@@ -7,13 +7,13 @@
  */
 
 /**
- * Description of Aluno
+ * Description of curso
  *
  * @author Natchios
  */
-class Aluno extends Controller{
+class Usuarios extends Controller{
     
-    function __construct()
+   function __construct()
     {
         parent::__construct();
         
@@ -30,7 +30,7 @@ class Aluno extends Controller{
 //       $categorias = $categoriaModel->getAll();
 
        require 'application/views/_templates/header.php';
-       require 'application/views/aluno/index.php';
+       require 'application/views/usuarios/index.php';
        require 'application/views/_templates/footer.php';  
        //var_dump($_GET); die;
     }
@@ -44,7 +44,7 @@ class Aluno extends Controller{
 //       $categorias = $categoriaModel->getAll();
 
        require 'application/views/_templates/header.php';
-       require 'application/views/aluno/add.php';
+       require 'application/views/usuarios/add.php';
        require 'application/views/_templates/footer.php';  
        //var_dump($_GET); die;
     }

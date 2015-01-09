@@ -99,7 +99,7 @@
                             <img src="img/avatar3.png" class="img-circle" alt="User Image" />
                         </div>
                         <div class="pull-left info">
-                            <p>Hello, Jane</p>
+                            <p>Olá, Márcio</p>
 
                             <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                         </div>
@@ -128,9 +128,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="pages/charts/morris.html"><i class="fa fa-angle-double-right"></i> Morris</a></li>
-                                <li><a href="pages/charts/flot.html"><i class="fa fa-angle-double-right"></i> Flot</a></li>
-                                <li><a href="pages/charts/inline.html"><i class="fa fa-angle-double-right"></i> Inline charts</a></li>
+                                <li><a href="<?=URL?>estagios"><i class="fa fa-angle-double-right"></i> Listar</a></li>
+                                <li><a href="<?=URL?>estagios/add"><i class="fa fa-angle-double-right"></i> Cadastrado</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -140,11 +139,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="pages/UI/general.html"><i class="fa fa-angle-double-right"></i> General</a></li>
-                                <li><a href="pages/UI/icons.html"><i class="fa fa-angle-double-right"></i> Icons</a></li>
-                                <li><a href="pages/UI/buttons.html"><i class="fa fa-angle-double-right"></i> Buttons</a></li>
-                                <li><a href="pages/UI/sliders.html"><i class="fa fa-angle-double-right"></i> Sliders</a></li>
-                                <li><a href="pages/UI/timeline.html"><i class="fa fa-angle-double-right"></i> Timeline</a></li>
+                                <li><a href="<?=URL?>professores"><i class="fa fa-angle-double-right"></i> Listar</a></li>
+                                <li><a href="<?=URL?>professores/add"><i class="fa fa-angle-double-right"></i> Cadastrar</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -153,8 +149,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="pages/tables/simple.html"><i class="fa fa-angle-double-right"></i>Listar</a></li>
-                                <li><a href="pages/tables/data.html"><i class="fa fa-angle-double-right"></i>Cadastrar</a></li>
+                                <li><a href="<?=URL?>alunos"><i class="fa fa-angle-double-right"></i>Listar</a></li>
+                                <li><a href="<?=URL?>alunos/add"><i class="fa fa-angle-double-right"></i>Cadastrar</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -163,8 +159,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="pages/tables/simple.html"><i class="fa fa-angle-double-right"></i> Simple tables</a></li>
-                                <li><a href="pages/tables/data.html"><i class="fa fa-angle-double-right"></i> Data tables</a></li>
+                                <li><a href="<?=URL?>instituicoes"><i class="fa fa-angle-double-right"></i> Listar</a></li>
+                                <li><a href="<?=URL?>instituicoes/add"><i class="fa fa-angle-double-right"></i> Cadastrar</a></li>
                             </ul>
                         </li>
                         <li class="treeview">
@@ -173,8 +169,8 @@
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
-                                <li><a href="pages/tables/simple.html"><i class="fa fa-angle-double-right"></i> Simple tables</a></li>
-                                <li><a href="pages/tables/data.html"><i class="fa fa-angle-double-right"></i> Data tables</a></li>
+                                <li><a href="<?=URL?>cursos"><i class="fa fa-angle-double-right"></i> Listar</a></li>
+                                <li><a href="<?=URL?>cursos"><i class="fa fa-angle-double-right"></i> Cadastrar</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -186,13 +182,14 @@
             <aside class="right-side">
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
+                    <?php $this->getFlash() ?>
                     <h1>
-                        Alunos                     
+                                            
                     </h1>
-                    <ol class="breadcrumb">
+                    <!--<ol class="breadcrumb">
                         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
                         <li><a href="#">Forms</a></li>
                         <li class="active">Alunos</li>
-                    </ol>
+                    </ol>-->
                 </section>
             

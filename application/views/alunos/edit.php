@@ -9,41 +9,47 @@
                                     <h3 class="box-title">Cadastrar Aluno</h3>
                                 </div><!-- /.box-header -->
                                 <!-- form start -->
-                                <form role="form">
+                                <form role="form" action="edit" method="post">
                                     <div class="box-body">
+                      
+                                        <input type="hidden" name="id" value="<?=$aluno['id']?>" class="form-control" id="exampleInputEmail1" placeholder="Nome">
+                                      
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nome</label>
-                                            <input type="nome" class="form-control" id="exampleInputEmail1" placeholder="Nome">
+                                            <input type="text" name="nome" value="<?=$aluno['nome']?>" class="form-control" id="exampleInputEmail1" placeholder="Nome">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Matrícula</label>
+                                            <input type="text" value="<?=$aluno['matricula']?>" name="matricula" class="form-control" id="exampleInputEmail1" placeholder="Nome">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputPassword1">Curso</label>
-                                            <select class="form-control">
-                                                <option>--</option>
-                                                <option>option 2</option>
-                                                <option>option 3</option>
-                                                <option>option 4</option>
-                                                <option>option 5</option>
+                                            <select class="form-control" name="curso_id_curso" id="InputNome">
+                                                <option value="<?=$aluno['id_curso']?>"><?=$aluno['nome_curso']?></option>
+                                                <?php foreach ($cursos as $curso):?>
+                                                    <option value="<?=$curso['id_curso']?>"><?=$curso['nome']?></option>
+                                                <?php endforeach;?>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Telelefone</label>
-                                            <input type="telefone" class="form-control" id="exampleInputEmail1" placeholder="Telefone">
+                                            <input type="text" value="<?=$aluno['telefone']?>"  name="telefone" class="form-control" id="exampleInputEmail1" placeholder="Telefone">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">E-mail</label>
-                                            <input type="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail">
+                                            <input type="text" value="<?=$aluno['email']?>" name="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">CPF</label>
-                                            <input type="cpf" class="form-control" id="exampleInputEmail1" placeholder="CPF">
+                                            <input type="text" value="<?=$aluno['cpf']?>" name="cpf" class="form-control" id="exampleInputEmail1" placeholder="CPF">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">RG</label>
-                                            <input type="rg" class="form-control" id="exampleInputEmail1" placeholder="RG">
+                                            <input type="text" value="<?=$aluno['rg']?>" name="rg" class="form-control" id="exampleInputEmail1" placeholder="RG">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Data nascimento</label>
-                                            <input type="datanascimento" class="form-control" id="exampleInputEmail1" placeholder="Data nascimento">
+                                            <input type="text" value="<?=$aluno['dat_nasc']?>" name="dat_nasc" class="form-control" id="exampleInputEmail1" placeholder="Data nascimento">
                                         </div>
            
                                     </div><!-- /.box-body -->

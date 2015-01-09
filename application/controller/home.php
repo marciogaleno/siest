@@ -7,12 +7,12 @@
  */
 
 /**
- * Description of instituicao
+ * Description of Home
  *
  * @author Natchios
  */
-class Instituicao extends Controller{
-    
+class Home extends Controller 
+{
    function __construct()
     {
         parent::__construct();
@@ -30,21 +30,6 @@ class Instituicao extends Controller{
 //       $categorias = $categoriaModel->getAll();
 
        require 'application/views/_templates/header.php';
-       require 'application/views/instituicao/index.php';
-       require 'application/views/_templates/footer.php';  
-       //var_dump($_GET); die;
-    }
-    
-    function add()
-    {   
-//       $livroModel = $this->loadModel('LivroModel');
-//       $livros = $livroModel->getAll();
-//       
-//       $categoriaModel = $this->loadModel('CategoriaModel');
-//       $categorias = $categoriaModel->getAll();
-
-       require 'application/views/_templates/header.php';
-       require 'application/views/instituicao/add.php';
        require 'application/views/_templates/footer.php';  
        //var_dump($_GET); die;
     }

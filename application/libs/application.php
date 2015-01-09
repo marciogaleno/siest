@@ -72,8 +72,8 @@ class Application
             }
         } else {
             // invalid URL, so simply show home/index
-            require './application/controller/livro.php';
-            $home = new Livro();
+            require './application/controller/Home.php';
+            $home = new Home();
             $home->index();
         }
     }

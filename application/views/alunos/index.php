@@ -17,19 +17,23 @@
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Matrícula</th>
                                             <th>Nome</th>
                                             <th>Curso</th>
                                             <th>Telefone</th>
                                             <th>E-mail</th>
+                                            <th>Ações</th>
                                         </tr>
+                                        <?php foreach ($alunos as $aluno):?>
                                         <tr>
-                                            <td>183</td>
-                                            <td>Márcio Vennan</td>
-                                            <td>Sistemas de informação</td>
-                                            <td>99999999</td>
-                                            <td>marciovennan@gmail.com</td>
+                                            <td><?=$aluno['matricula']?></td>
+                                            <td><?=$aluno['nome']?></td>
+                                            <td><?=$aluno['nome_curso']?></td>
+                                            <td><?=$aluno['telefone']?></td>
+                                            <td><?=$aluno['email']?></td>
+                                            <td><a href="<?=URL?>/alunos/edit/<?=$aluno['id']?>"><span class="label label-primary">Editar</span></a></td>
                                         </tr>
+                                        <?php endforeach;?>
                                     </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
@@ -37,3 +41,6 @@
                     </div>
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
+            
+
+

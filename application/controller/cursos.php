@@ -7,11 +7,11 @@
  */
 
 /**
- * Description of professor
+ * Description of curso
  *
  * @author Natchios
  */
-class Professor extends Controller{
+class Cursos extends Controller{
     
    function __construct()
     {
@@ -30,7 +30,7 @@ class Professor extends Controller{
 //       $categorias = $categoriaModel->getAll();
 
        require 'application/views/_templates/header.php';
-       require 'application/views/professor/index.php';
+       require 'application/views/cursos/index.php';
        require 'application/views/_templates/footer.php';  
        //var_dump($_GET); die;
     }
@@ -44,7 +44,7 @@ class Professor extends Controller{
 //       $categorias = $categoriaModel->getAll();
 
        require 'application/views/_templates/header.php';
-       require 'application/views/professor/add.php';
+       require 'application/views/cursos/add.php';
        require 'application/views/_templates/footer.php';  
        //var_dump($_GET); die;
     }
