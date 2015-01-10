@@ -91,4 +91,20 @@ class Alunos extends Controller{
        require 'application/views/_templates/footer.php';  
        //var_dump($_GET); die;
     }
+    
+    function searchAjax()
+    { 
+       $AlunoModel = $this->loadModel('AlunoModel');
+       $alunos = $AlunoModel->search();
+       	// put in bold the written text
+       //print_r($alunos);
+       foreach ($alunos as $rs) {
+            $aluno_nome = str_replace($_POST['aluno'], '<b>'.$_POST['aluno'].'</b>', $rs['nome']);
+            $id = str_replace($_POST['aluno'], '<b>'.$_POST['aluno'].'</b>', $rs['id']);
+            $matricula = str_replace($_POST['aluno'], '<b>'.$_POST['aluno'].'</b>', $rs['matricula']);
+            // add new option
+            echo '<a href="#" class="list-group-item" onclick="set_item(\''.str_replace("'", "\'", $rs['nome']). "'" . ",'". $rs['id'] . '\')">'. $matricula . ' - ' .$aluno_nome.'</a>';
+       }
+       
+    }
 }

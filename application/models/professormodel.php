@@ -133,9 +133,9 @@ class AlunoModel {
     
     public function search()
     {
-        $aluno = '%'.$_POST['aluno'].'%';
+        $professor = '%'.$_POST['professor'].'%';
 
-        $sql = 'SELECT * FROM aluno WHERE nome LIKE :aluno  OR matricula LIKE :aluno LIMIT 0, 10';
+        $sql = 'SELECT * FROM professores WHERE nome LIKE :aluno LIMIT 0, 10';
   
         $query = $this->db->prepare($sql);
         
