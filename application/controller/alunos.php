@@ -95,12 +95,11 @@ class Alunos extends Controller{
     function searchAjax()
     { 
        $AlunoModel = $this->loadModel('AlunoModel');
-       $alunos = $AlunoModel->search();
+       $alunos = $AlunoModel->searchAjax();
        	// put in bold the written text
        //print_r($alunos);
        foreach ($alunos as $rs) {
             $aluno_nome = str_replace($_POST['aluno'], '<b>'.$_POST['aluno'].'</b>', $rs['nome']);
-            $id = str_replace($_POST['aluno'], '<b>'.$_POST['aluno'].'</b>', $rs['id']);
             $matricula = str_replace($_POST['aluno'], '<b>'.$_POST['aluno'].'</b>', $rs['matricula']);
             // add new option
             echo '<a href="#" class="list-group-item" onclick="set_item_aluno(\''.str_replace("'", "\'", $rs['nome']). "'" . ",'". $rs['id'] . '\')">'. $matricula . ' - ' .$aluno_nome.'</a>';

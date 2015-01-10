@@ -131,7 +131,7 @@ class AlunoModel {
         return $query->fetchAll();
     }
     
-    public function search()
+    public function searchAjax()
     {
         $aluno = '%'.$_POST['aluno'].'%';
 
