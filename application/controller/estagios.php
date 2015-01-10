@@ -22,8 +22,8 @@ class Estagios extends Controller{
     
     function index()
     {   
-//       $livroModel = $this->loadModel('LivroModel');
-//       $livros = $livroModel->getAll();
+       $estagioModel = $this->loadModel('EstagioModel');
+       $estagios = $estagioModel->getAll();
 //       
 //       $categoriaModel = $this->loadModel('CategoriaModel');
 //       $categorias = $categoriaModel->getAll();
@@ -36,11 +36,20 @@ class Estagios extends Controller{
     
     function add()
     {   
-//       $livroModel = $this->loadModel('LivroModel');
-//       $livros = $livroModel->getAll();
-//       
-//       $categoriaModel = $this->loadModel('CategoriaModel');
-//       $categorias = $categoriaModel->getAll();
+      Auth::estaLogadoAdmin();       
+
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // load model, perform an action on the model
+            $estagioModel = $this->loadModel('EstagioModel');
+            //print_r($_POST);die;
+            if ($estagioModel->add($_POST)){
+                $this->setflash('Salvo com sucesso', array('class' => 'alert alert-success'));
+                 header('Location: '. URL);
+                 exit;
+            }else{
+                $this->setflash('Erro ao salvar', array('class' => 'alert alert-error'));
+            }
+        }  
 
        require 'application/views/_templates/header.php';
        require 'application/views/estagios/add.php';

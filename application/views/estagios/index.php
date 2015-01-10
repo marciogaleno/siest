@@ -22,19 +22,25 @@
                                             <th>Área</th>
                                             <th>Supervisor professor</th>
                                             <th>Supervisor Técnico</th>
+                                            <th>Instituição</th>
                                             <th>Data início</th>
                                             <th>Data fim</th>
                                                                                       
                                         </tr>
+                                        <?php foreach ($estagios as $estagio):?>
                                         <tr>
-                                            <td>SI1123001-21</td>
-                                            <td>Márcio Vennan</td>
-                                            <td>Desensolvimento</td>
-                                            <td>Mauro Silva</td>
-                                            <td>Charles</td>
-                                            <td>05-01-2015</td>
-                                            <td>05-06-2015</td>
+                                            <td><?=$estagio['matricula_aluno']?></td>
+                                            <td><?=$estagio['nome_aluno']?></td>
+                                            <td><?=$estagio['area']?></td>
+                                            <td><?=$estagio['nome_professor']?></td>
+                                            <td><?=$estagio['nome_supervisor_tecnico']?></td>
+                                            <td><?=$estagio['nome_instituicao']?></td>
+                                            <td><?=$estagio['data_inicio']?></td>
+                                            <td><?=$estagio['data_fim']?></td>
+                                            <td><a href="<?=URL?>/estagios/edit/<?=$estagio['id_estagio']?>"><span class="label label-primary">Editar</span></a></td>
+                                            <td><a href="<?=URL?>/estagios/view/<?=$estagio['id_estagio']?>"><span class="label label-success">Visualizar</span></a></td>
                                         </tr>
+                                        <?php endforeach;?>
                                     </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->

@@ -11,7 +11,7 @@
  *
  * @author Natchios
  */
-class Professores extends Controller{
+class Supervtecnicos extends Controller{
     
    function __construct()
     {
@@ -51,17 +51,16 @@ class Professores extends Controller{
     
     function searchAjax()
     { 
-       $professorModel = $this->loadModel('ProfessorModel');
-       $professores = $professorModel->searchAjax();
+       $supervtecnicoModel = $this->loadModel('SupervtecnicoModel');
+       $superv_tecnicos = $supervtecnicoModel->searchAjax();
        	// put in bold the written text
        //print_r($alunos);
-       foreach ($professores as $rs) {
-            $aluno_nome = str_replace($_POST['professor_nome_matricula'], '<b>'.$_POST['professor_nome_matricula'].'</b>', $rs['nome']);
-            $matricula = str_replace($_POST['professor_nome_matricula'], '<b>'.$_POST['professor_nome_matricula'].'</b>', $rs['matricula']);
+       foreach ($superv_tecnicos as $rs) {
+            $superv_tecnico_nome = str_replace($_POST['superv_tecnico_nome'], '<b>'.$_POST['superv_tecnico_nome'].'</b>', $rs['nome']);
+            $instituicao = str_replace($_POST['superv_tecnico_nome'], '<b>'.$_POST['superv_tecnico_nome'].'</b>', $rs['nome_instituicao']);
+            //$matricula = str_replace($_POST['professor_nome_matricula'], '<b>'.$_POST['professor_nome_matricula'].'</b>', $rs['matricula']);
             // add new option
-            //echo '<a href="#"  class="list-group-item" onclick="set_item_professor(\''.str_replace("'", "\'", $rs['nome']). "'" . ",'". $rs['id_professor'] . '\')">'. $matricula . ' - ' .$aluno_nome.'</a>';
-            echo '<a href="#" class="list-group-item" onclick="set_item_professor(\''.str_replace("'", "\'", $rs['nome']). "'" . ",'". $rs['id_professor'] . '\')">'. $matricula . ' - ' .$aluno_nome.'</a>';
-
+            echo '<a href="#"  class="list-group-item" onclick="set_item_superv_tec(\''.str_replace("'", "\'", $rs['nome']). "'" . ",'". $rs['id'] . '\')">'. $superv_tecnico_nome . ' - ' . $instituicao .'</a>';
        }
        
     }
