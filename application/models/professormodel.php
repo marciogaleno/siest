@@ -7,11 +7,11 @@
  */
 
 /**
- * Description of alunomodel
+ * Description of Professormodel
  *
  * @author Natchios
  */
-class AlunoModel {
+class ProfessorModel {
     /**
      * Every model needs a database connection, passed to the model
      * @param object $db A PDO database connection
@@ -131,15 +131,15 @@ class AlunoModel {
         return $query->fetchAll();
     }
     
-    public function search()
+    public function searchAjax()
     {
-        $professor = '%'.$_POST['professor'].'%';
+        $professor = '%'.$_POST['professor_nome_matricula'].'%';
 
-        $sql = 'SELECT * FROM professores WHERE nome LIKE :aluno LIMIT 0, 10';
+        $sql = 'SELECT * FROM professor WHERE nome LIKE :professor OR matricula LIKE :professor LIMIT 0, 10';
   
         $query = $this->db->prepare($sql);
         
-        $query->bindParam(':aluno', $aluno, PDO::PARAM_STR);
+        $query->bindParam(':professor', $professor, PDO::PARAM_STR);
 
              //var_dump($alunos); die;
         $query->execute();

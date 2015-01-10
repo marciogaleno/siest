@@ -103,7 +103,7 @@ class Alunos extends Controller{
             $id = str_replace($_POST['aluno'], '<b>'.$_POST['aluno'].'</b>', $rs['id']);
             $matricula = str_replace($_POST['aluno'], '<b>'.$_POST['aluno'].'</b>', $rs['matricula']);
             // add new option
-            echo '<a href="#" class="list-group-item" onclick="set_item(\''.str_replace("'", "\'", $rs['nome']). "'" . ",'". $rs['id'] . '\')">'. $matricula . ' - ' .$aluno_nome.'</a>';
+            echo '<a href="#" class="list-group-item" onclick="set_item_aluno(\''.str_replace("'", "\'", $rs['nome']). "'" . ",'". $rs['id'] . '\')">'. $matricula . ' - ' .$aluno_nome.'</a>';
        }
        
     }

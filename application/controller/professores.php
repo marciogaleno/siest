@@ -51,16 +51,15 @@ class Professores extends Controller{
     
     function searchAjax()
     { 
-       $AlunoModel = $this->loadModel('AlunoModel');
-       $alunos = $AlunoModel->search();
+       $professorModel = $this->loadModel('ProfessorModel');
+       $professores = $professorModel->searchAjax();
        	// put in bold the written text
        //print_r($alunos);
-       foreach ($alunos as $rs) {
-            $aluno_nome = str_replace($_POST['aluno'], '<b>'.$_POST['aluno'].'</b>', $rs['nome']);
-            $id = str_replace($_POST['aluno'], '<b>'.$_POST['aluno'].'</b>', $rs['id']);
-            $matricula = str_replace($_POST['aluno'], '<b>'.$_POST['aluno'].'</b>', $rs['matricula']);
+       foreach ($professores as $rs) {
+            $aluno_nome = str_replace($_POST['professor_nome_matricula'], '<b>'.$_POST['professor_nome_matricula'].'</b>', $rs['nome']);
+            $matricula = str_replace($_POST['professor_nome_matricula'], '<b>'.$_POST['professor_nome_matricula'].'</b>', $rs['matricula']);
             // add new option
-            echo '<li onclick="set_item(\''.str_replace("'", "\'", $rs['nome']). "'" . ",'". $rs['id'] . '\')">'. $matricula . ' - ' .$aluno_nome.'</li>';
+            echo '<a href="#"  class="list-group-item" onclick="set_item_professor(\''.str_replace("'", "\'", $rs['nome']). "'" . ",'". $rs['id_professor'] . '\')">'. $matricula . ' - ' .$aluno_nome.'</a>';
        }
        
     }
