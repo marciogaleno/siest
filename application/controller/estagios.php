@@ -15,9 +15,7 @@ class Estagios extends Controller{
    function __construct()
     {
         parent::__construct();
-        
-        
-        
+        Auth::estaLogado();
     }  
     
     function index()
@@ -30,6 +28,20 @@ class Estagios extends Controller{
 
        require 'application/views/_templates/header.php';
        require 'application/views/estagios/index.php';
+       require 'application/views/_templates/footer.php';  
+       //var_dump($_GET); die;
+    }
+    
+    function view($id)
+    {   
+       $estagioModel = $this->loadModel('EstagioModel');
+       $estagio = $estagioModel->get($id);
+//       
+       $visitaModel = $this->loadModel('VisitaModel');
+       $visitas = $visitaModel->get($estagio['id_estagio']);
+
+       require 'application/views/_templates/header.php';
+       require 'application/views/estagios/view.php';
        require 'application/views/_templates/footer.php';  
        //var_dump($_GET); die;
     }
@@ -55,6 +67,24 @@ class Estagios extends Controller{
        require 'application/views/estagios/add.php';
        require 'application/views/_templates/footer.php';  
        //var_dump($_GET); die;
+    }
+    
+    function addVisita()
+    {   
+        Auth::estaLogadoAdmin();
+        
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // load model, perform an action on the model
+            $visitaModel = $this->loadModel('VisitaModel');
+            //print_r($_POST);die;
+            if ($visitaModel->add($_POST)){
+                echo true;
+                 exit;
+            }else{
+                echo false;
+                exit;
+            }
+        }   
     }
 
 }

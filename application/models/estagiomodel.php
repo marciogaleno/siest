@@ -99,32 +99,30 @@ class EstagioModel {
     
     public function get($id)
     {
-        $sql = "SELECT a.*, c.nome as nome_curso, c.id_curso FROM aluno as a "
-                . "INNER JOIN curso as c ON c.id_curso = a.curso_id_curso"
-                . " WHERE a.id={$id}";
+        $sql = 'SELECT 
+                    e.*, a.nome as nome_aluno, a.matricula as matricula_aluno, a.telefone as telefone_aluno,
+                    p.nome as nome_professor, p.telefone as telefone_professor, p.matricula as matricula_professor,
+                    st.nome as nome_supervisor_tecnico,
+                    st.telefone as telefone_supervisor_tecnico, i.nome as nome_instituica, c.nome as nome_curso 
+                    FROM estagio as e 
+                    INNER JOIN aluno as a ON a.id = e.aluno_id 
+                    INNER JOIN curso as c ON c.id_curso = a.curso_id_curso 
+                    INNER JOIN professor as p ON p.id_professor = e.supervisor_idsupervisor 
+                    INNER JOIN superv_tecnico as st ON st.id = e.id_superv 
+                    INNER JOIN instituicao as i ON i.id_instituicao = st.instituicao_id_instituicao
+                    WHERE e.id_estagio = :id_estagio';
+        
         $query = $this->db->prepare($sql);
-             //var_dump($estagios); die;
+        
+        $query->bindValue(':id_estagio', $id);
+
         $query->execute();  
         
         $estagio = $query->fetchAll();
         
         return reset($estagio);
     }
-    
-    public function delete($id)
-    {
-        $sql = "DELETE FROM livro WHERE idLivro={$id}";
-  
-        $query = $this->db->prepare($sql);
-             //var_dump($estagios); die;
-        if ($query->execute()){
-            return true;
-        }  
-        
-        return false;
-        
-    }
-            
+
     public function getAll()
     {
         $sql = 'SELECT 
@@ -144,6 +142,21 @@ class EstagioModel {
         
         return $query->fetchAll();
     }
+    
+    public function delete($id)
+    {
+        $sql = "DELETE FROM livro WHERE idLivro={$id}";
+  
+        $query = $this->db->prepare($sql);
+             //var_dump($estagios); die;
+        if ($query->execute()){
+            return true;
+        }  
+        
+        return false;
+        
+    }
+
     
     public function searchAjax()
     {

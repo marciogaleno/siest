@@ -37,8 +37,8 @@
                                             <td><?=$estagio['nome_instituicao']?></td>
                                             <td><?=$estagio['data_inicio']?></td>
                                             <td><?=$estagio['data_fim']?></td>
-                                            <td><a href="<?=URL?>/estagios/edit/<?=$estagio['id_estagio']?>"><span class="label label-primary">Editar</span></a></td>
-                                            <td><a href="<?=URL?>/estagios/view/<?=$estagio['id_estagio']?>"><span class="label label-success">Visualizar</span></a></td>
+                                            <td><a href="<?=URL?>estagios/edit/<?=$estagio['id_estagio']?>"><span class="label label-primary">Editar</span></a></td>
+                                            <td><a href="<?=URL?>estagios/view/<?=$estagio['id_estagio']?>"><span class="label label-success">Visualizar</span></a></td>
                                         </tr>
                                         <?php endforeach;?>
                                     </table>
