@@ -17,17 +17,24 @@
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
                                         <tr>
-                                            <th>ID</th>
+                                            <th>Matrícula</th>
                                             <th>Nome</th>
                                             <th>Curso</th>
                                             <th>Matrícula</th>
+                                            <th>Telefone</th>
                                         </tr>
+                                        <?php foreach ($professores as $professor):?>
                                         <tr>
-                                            <td>183</td>
-                                            <td>Mauro silva</td>
-                                            <td>Sistemas de informação</td>
-                                            <td>99999999</td>
+                                            <td><?=$professor['matricula']?></td>
+                                            <td><?=$professor['nome']?></td>
+                                            <td><?=$professor['nome_curso']?></td>
+                                            <td><?=$professor['matricula']?></td>
+                                            <td><?=$professor['telefone']?></td>
+                                            <td><a href="<?=URL?>professores/edit/<?=$professor['id_professor']?>" class="label label-primary">Editar</a></td>
+                                            <td><a href="<?=URL?>professores/view/<?=$professor['id_professor']?>" class="label label-info">Visualizar</a></td>
+                                            <td><a href="<?=URL?>professores/delete/<?=$professor['id_professor']?>" class="label label-danger delete">Deletar</a></td>
                                         </tr>
+                                        <?php endforeach;?>
                                     </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
@@ -35,3 +42,5 @@
                     </div>
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
+            
+<?php include 'application/views/elements/deletemodal.php';?>

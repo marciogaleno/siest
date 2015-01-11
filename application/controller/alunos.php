@@ -37,9 +37,6 @@ class Alunos extends Controller{
     
     function add()
     {   
-        Auth::estaLogadoAdmin();
-        
-
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // load model, perform an action on the model
             $alunoModel = $this->loadModel('AlunoModel');

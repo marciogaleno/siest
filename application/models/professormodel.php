@@ -28,23 +28,22 @@ class ProfessorModel {
      * adicona um livro
      * @param srray $data
      */
-    public function add($aluno)
+    public function add($professor)
     {
-        $sql = "INSERT INTO aluno SET nome = :nome,matricula = :matricula, curso_id_curso = :curso_id_curso, "
-                . " telefone = :telefone, email = :email,"
-                . "cpf = :cpf,dat_nasc = :dat_nasc, "
-                . "rg = :rg";
+        $sql = "INSERT INTO professor SET "
+                . "nome = :nome, "
+                . "matricula = :matricula, "
+                . "curso_id_curso = :curso_id_curso, "
+                . " telefone = :telefone";
+
         
         $query = $this->db->prepare($sql); 
-       //print_r($aluno); die;
-        $query->bindValue(':nome', $aluno['nome'], PDO::PARAM_STR);
-        $query->bindValue(':matricula', $aluno['matricula'], PDO::PARAM_STR);
-        $query->bindValue(':curso_id_curso', $aluno['curso_id_curso']);
-        $query->bindValue(':telefone', $aluno['telefone'], PDO::PARAM_STR);
-        $query->bindValue(':email', $aluno['email'], PDO::PARAM_STR);
-        $query->bindValue(':cpf', $aluno['cpf'], PDO::PARAM_STR);
-        $query->bindValue(':dat_nasc', $aluno['dat_nasc'], PDO::PARAM_STR);
-        $query->bindValue(':rg', $aluno['rg'], PDO::PARAM_STR);
+       //print_r($professor); die;
+        $query->bindValue(':nome', $professor['nome'], PDO::PARAM_STR);
+        $query->bindValue(':matricula', $professor['matricula'], PDO::PARAM_STR);
+        $query->bindValue(':curso_id_curso', $professor['curso_id_curso']);
+        $query->bindValue(':telefone', $professor['telefone'], PDO::PARAM_STR);
+
         
         
         if ($query->execute()){
@@ -55,32 +54,24 @@ class ProfessorModel {
         return false;
     }
     
-    public function edit($aluno)
+    public function edit($professor)
     {
-        $sql = "UPDATE aluno SET "
+        $sql = "UPDATE professor SET "
                 . "nome = :nome,"
                 . "matricula = :matricula, "
                 . "curso_id_curso = :curso_id_curso, "
-                . "telefone = :telefone, "
-                . "email = :email, "
-                . "cpf = :cpf,  "
-                . "dat_nasc = :dat_nasc, "
-                . "rg = :rg "
-                . " WHERE id = :id";
+                . "telefone = :telefone "
+                . " WHERE id_professor = :id_professor ";
         
         $query = $this->db->prepare($sql); 
         
         
         
-        $query->bindValue(':id', (int)$aluno['id'], PDO::PARAM_INT);
-        $query->bindValue(':nome', $aluno['nome'], PDO::PARAM_STR);
-        $query->bindValue(':matricula', $aluno['matricula'], PDO::PARAM_STR);
-        $query->bindValue(':curso_id_curso', $aluno['curso_id_curso']);
-        $query->bindValue(':telefone', $aluno['telefone'], PDO::PARAM_STR);
-        $query->bindValue(':email', $aluno['email'], PDO::PARAM_STR);
-        $query->bindValue(':cpf', $aluno['cpf'], PDO::PARAM_STR);
-        $query->bindValue(':dat_nasc', $aluno['dat_nasc'], PDO::PARAM_STR);
-        $query->bindValue(':rg', $aluno['rg'], PDO::PARAM_STR);
+        $query->bindValue(':id_professor', (int)$professor['id_professor'], PDO::PARAM_INT);
+        $query->bindValue(':nome', $professor['nome'], PDO::PARAM_STR);
+        $query->bindValue(':matricula', $professor['matricula'], PDO::PARAM_STR);
+        $query->bindValue(':curso_id_curso', $professor['curso_id_curso']);
+        $query->bindValue(':telefone', $professor['telefone'], PDO::PARAM_STR);
         
             
         if ($query->execute()){
@@ -93,24 +84,26 @@ class ProfessorModel {
     
     public function get($id)
     {
-        $sql = "SELECT a.*, c.nome as nome_curso, c.id_curso FROM aluno as a "
-                . "INNER JOIN curso as c ON c.id_curso = a.curso_id_curso"
-                . " WHERE a.id={$id}";
+        $sql = "SELECT p.*, c.nome as nome_curso, c.id_curso FROM professor as p "
+                . "INNER JOIN curso as c ON c.id_curso = p.curso_id_curso"
+                . " WHERE p.id_professor = {$id}";
         $query = $this->db->prepare($sql);
-             //var_dump($alunos); die;
+             //var_dump($professors); die;
         $query->execute();  
         
-        $aluno = $query->fetchAll();
+        $professor = $query->fetchAll();
         
-        return reset($aluno);
+        return reset($professor);
     }
     
     public function delete($id)
     {
-        $sql = "DELETE FROM livro WHERE idLivro={$id}";
+        $sql = "DELETE FROM professor WHERE id_professor = :id_professor";
   
         $query = $this->db->prepare($sql);
-             //var_dump($alunos); die;
+        
+        $query->bindParam(':id_professor', $id, PDO::PARAM_INT);
+             //var_dump($professors); die;
         if ($query->execute()){
             return true;
         }  
@@ -121,11 +114,11 @@ class ProfessorModel {
             
     public function getAll()
     {
-        $sql = 'SELECT a.*, c.nome as nome_curso FROM aluno as a '
-                . 'INNER JOIN curso as c ON c.id_curso = a.curso_id_curso';
+        $sql = 'SELECT p.*, c.nome as nome_curso FROM professor as p '
+                . 'INNER JOIN curso as c ON c.id_curso = p.curso_id_curso';
         
         $query = $this->db->prepare($sql);
-             //var_dump($alunos); die;
+             //var_dump($professors); die;
         $query->execute();
         
         return $query->fetchAll();
@@ -141,7 +134,7 @@ class ProfessorModel {
         
         $query->bindParam(':professor', $professor, PDO::PARAM_STR);
 
-             //var_dump($alunos); die;
+             //var_dump($professors); die;
         $query->execute();
         
         return $query->fetchAll();
@@ -160,7 +153,7 @@ class ProfessorModel {
         
         return $nav;
 //        $query = $this->db->prepare($sql);
-//             //var_dump($alunos); die;
+//             //var_dump($professors); die;
 //        $query->execute();
 //        
 //        return $query->fetchAll();
@@ -175,7 +168,7 @@ class ProfessorModel {
         $query = $this->db->prepare($sql);
         
         $query->bindValue(':idCategoria', $categoria_id, PDO::PARAM_INT);
-             //var_dump($alunos); die;
+             //var_dump($professors); die;
         $query->execute();
         
         return $query->fetchAll();
