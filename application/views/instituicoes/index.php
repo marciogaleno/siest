@@ -17,23 +17,22 @@
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
                                         <tr>
-                                            <th>ID</th>
                                             <th>Nome</th>
                                             <th>CNPJ</th>
                                             <th>Representante</th>
-                                            <th>Endereço</th>
                                             <th>E-mail</th>
-                                            <th>Telegone</th>
                                         </tr>
+                                        <?php foreach ($instituicoes as $instituicao):?>
                                         <tr>
-                                            <td>183</td>
-                                            <td>AGED</td>
-                                            <td>Charles</td>
-                                            <td>989898989890/1223-23</td>
-                                            <td>Av. Castelo Branco</td>
-                                            <td>contao@aged.ma.gov.br</td>
-                                            <td>(98)9999-9999</td>
+                                            <td><?=$instituicao['nome']?></td>
+                                            <td><?=$instituicao['cnpj']?></td>
+                                            <td><?=$instituicao['representante']?></td>
+                                            <td><?=$instituicao['email']?></td>
+                                            <td><a href="<?=URL?>instituicoes/edit/<?=$instituicao['id_instituicao']?>" class="label label-primary">Editar</a></td>
+                                            <td><a href="<?=URL?>instituicoes/view/<?=$instituicao['id_instituicao']?>" class="label label-info">Visualizar</a></td>
+                                            <td><a href="<?=URL?>instituicoes/delete/<?=$instituicao['id_instituicao']?>" class="label label-danger delete">Deletar</a></td>
                                         </tr>
+                                        <?php endforeach;?>
                                     </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
@@ -41,3 +40,4 @@
                     </div>
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
+            <?php include 'application/views/elements/deletemodal.php';?>
