@@ -96,6 +96,7 @@ class AlunoModel {
         $sql = "SELECT a.*, c.nome as nome_curso, c.id_curso FROM aluno as a "
                 . "INNER JOIN curso as c ON c.id_curso = a.curso_id_curso"
                 . " WHERE a.id={$id}";
+                
         $query = $this->db->prepare($sql);
              //var_dump($alunos); die;
         $query->execute();  
@@ -107,9 +108,11 @@ class AlunoModel {
     
     public function delete($id)
     {
-        $sql = "DELETE FROM livro WHERE idLivro={$id}";
+        $sql = "DELETE FROM aluno WHERE id = :id";
   
         $query = $this->db->prepare($sql);
+        
+         $query->bindParam(':id', $id, PDO::PARAM_INT);
              //var_dump($alunos); die;
         if ($query->execute()){
             return true;

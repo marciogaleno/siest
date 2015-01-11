@@ -114,8 +114,6 @@ class Professores extends Controller{
                 header('Location: '. URL . $this->name);                
             }
         }
-
-
     }
     
     function searchAjax()

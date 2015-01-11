@@ -31,8 +31,9 @@
                                             <td><?=$aluno['nome_curso']?></td>
                                             <td><?=$aluno['telefone']?></td>
                                             <td><?=$aluno['email']?></td>
-                                            <td><a href="<?=URL?>/alunos/edit/<?=$aluno['id']?>"><span class="label label-primary">Editar</span></a></td>
-                                        </tr>
+                                            <td><a href="<?=URL?>alunos/edit/<?=$aluno['id']?>" class="label label-primary">Editar</a></td>
+                                            <td><a href="<?=URL?>alunos/view/<?=$aluno['id']?>" class="label label-info">Visualizar</a></td>
+                                            <td><a href="<?=URL?>alunos/delete/<?=$aluno['id']?>" class="label label-danger delete">Deletar</a></td>                                        </tr>
                                         <?php endforeach;?>
                                     </table>
                                 </div><!-- /.box-body -->
@@ -42,5 +43,6 @@
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
             
+          <?php include 'application/views/elements/deletemodal.php';?>  
 
 
