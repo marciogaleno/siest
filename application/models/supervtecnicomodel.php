@@ -28,25 +28,19 @@ class SupervtecnicoModel {
      * adicona um livro
      * @param srray $data
      */
-    public function add($aluno)
+    public function add($supervtecnico)
     {
-        $sql = "INSERT INTO aluno SET nome = :nome,matricula = :matricula, curso_id_curso = :curso_id_curso, "
-                . " telefone = :telefone, email = :email,"
-                . "cpf = :cpf,dat_nasc = :dat_nasc, "
-                . "rg = :rg";
+        $sql = "INSERT INTO superv_tecnico SET "
+                . "nome = :nome,"
+                . "telefone = :telefone, "
+                . "instituicao_id_instituicao = :instituicao_id_instituicao";
         
         $query = $this->db->prepare($sql); 
-       //print_r($aluno); die;
-        $query->bindValue(':nome', $aluno['nome'], PDO::PARAM_STR);
-        $query->bindValue(':matricula', $aluno['matricula'], PDO::PARAM_STR);
-        $query->bindValue(':curso_id_curso', $aluno['curso_id_curso']);
-        $query->bindValue(':telefone', $aluno['telefone'], PDO::PARAM_STR);
-        $query->bindValue(':email', $aluno['email'], PDO::PARAM_STR);
-        $query->bindValue(':cpf', $aluno['cpf'], PDO::PARAM_STR);
-        $query->bindValue(':dat_nasc', $aluno['dat_nasc'], PDO::PARAM_STR);
-        $query->bindValue(':rg', $aluno['rg'], PDO::PARAM_STR);
-        
-        
+       //print_r($supervtecnico); die;
+        $query->bindValue(':nome', $supervtecnico['nome'], PDO::PARAM_STR);
+        $query->bindValue(':telefone', $supervtecnico['telefone'], PDO::PARAM_STR);
+        $query->bindValue(':instituicao_id_instituicao', $supervtecnico['instituicao_id_instituicao']);
+
         if ($query->execute()){
 
             return true;
@@ -55,34 +49,21 @@ class SupervtecnicoModel {
         return false;
     }
     
-    public function edit($aluno)
+    public function edit($supervtecnico)
     {
-        $sql = "UPDATE aluno SET "
+        $sql = "UPDATE superv_tecnico SET "
                 . "nome = :nome,"
-                . "matricula = :matricula, "
-                . "curso_id_curso = :curso_id_curso, "
                 . "telefone = :telefone, "
-                . "email = :email, "
-                . "cpf = :cpf,  "
-                . "dat_nasc = :dat_nasc, "
-                . "rg = :rg "
+                . "instituicao_id_instituicao = :instituicao_id_instituicao "
                 . " WHERE id = :id";
         
         $query = $this->db->prepare($sql); 
+        print_r($supervtecnico);
+        $query->bindValue(':nome', $supervtecnico['nome'], PDO::PARAM_STR);
+        $query->bindValue(':telefone', $supervtecnico['telefone'], PDO::PARAM_STR);
+        $query->bindValue(':instituicao_id_instituicao', $supervtecnico['instituicao_id_instituicao']);
+        $query->bindValue(':id', $supervtecnico['id']);
         
-        
-        
-        $query->bindValue(':id', (int)$aluno['id'], PDO::PARAM_INT);
-        $query->bindValue(':nome', $aluno['nome'], PDO::PARAM_STR);
-        $query->bindValue(':matricula', $aluno['matricula'], PDO::PARAM_STR);
-        $query->bindValue(':curso_id_curso', $aluno['curso_id_curso']);
-        $query->bindValue(':telefone', $aluno['telefone'], PDO::PARAM_STR);
-        $query->bindValue(':email', $aluno['email'], PDO::PARAM_STR);
-        $query->bindValue(':cpf', $aluno['cpf'], PDO::PARAM_STR);
-        $query->bindValue(':dat_nasc', $aluno['dat_nasc'], PDO::PARAM_STR);
-        $query->bindValue(':rg', $aluno['rg'], PDO::PARAM_STR);
-        
-            
         if ($query->execute()){
 
             return true;
@@ -93,24 +74,29 @@ class SupervtecnicoModel {
     
     public function get($id)
     {
-        $sql = "SELECT a.*, c.nome as nome_curso, c.id_curso FROM aluno as a "
-                . "INNER JOIN curso as c ON c.id_curso = a.curso_id_curso"
-                . " WHERE a.id={$id}";
+        $sql = 'SELECT st.*, i.nome as nome_instituicao, i.id_instituicao FROM superv_tecnico as st '
+             . 'INNER JOIN instituicao as i ON i.id_instituicao = st.instituicao_id_instituicao '
+             . 'WHERE st.id = :id';
+        
         $query = $this->db->prepare($sql);
-             //var_dump($alunos); die;
+        
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+             //var_dump($supervtecnicos); die;
         $query->execute();  
         
-        $aluno = $query->fetchAll();
+        $supervtecnico = $query->fetchAll();
         
-        return reset($aluno);
+        return reset($supervtecnico);
     }
     
     public function delete($id)
     {
-        $sql = "DELETE FROM livro WHERE idLivro={$id}";
-  
+        $sql = "DELETE FROM superv_tecnico WHERE id = :id";
+
         $query = $this->db->prepare($sql);
-             //var_dump($alunos); die;
+        
+        $query->bindValue(':id', $id, PDO::PARAM_INT);
+         
         if ($query->execute()){
             return true;
         }  
@@ -121,11 +107,12 @@ class SupervtecnicoModel {
             
     public function getAll()
     {
-        $sql = 'SELECT a.*, c.nome as nome_curso FROM aluno as a '
-                . 'INNER JOIN curso as c ON c.id_curso = a.curso_id_curso';
+        $sql = 'SELECT st.*, i.nome as nome_instituicao, i.id_instituicao FROM superv_tecnico as st '
+             . 'INNER JOIN instituicao as i ON i.id_instituicao = st.instituicao_id_instituicao '
+             . 'WHERE 1 = 1';
         
         $query = $this->db->prepare($sql);
-             //var_dump($alunos); die;
+             //var_dump($supervtecnicos); die;
         $query->execute();
         
         return $query->fetchAll();
@@ -143,7 +130,7 @@ class SupervtecnicoModel {
         
         $query->bindParam(':superv_tecnico', $superv_tecnico, PDO::PARAM_STR);
 
-             //var_dump($alunos); die;
+             //var_dump($supervtecnicos); die;
         $query->execute();
         
         return $query->fetchAll();
@@ -162,7 +149,7 @@ class SupervtecnicoModel {
         
         return $nav;
 //        $query = $this->db->prepare($sql);
-//             //var_dump($alunos); die;
+//             //var_dump($supervtecnicos); die;
 //        $query->execute();
 //        
 //        return $query->fetchAll();
@@ -177,7 +164,7 @@ class SupervtecnicoModel {
         $query = $this->db->prepare($sql);
         
         $query->bindValue(':idCategoria', $categoria_id, PDO::PARAM_INT);
-             //var_dump($alunos); die;
+             //var_dump($supervtecnicos); die;
         $query->execute();
         
         return $query->fetchAll();

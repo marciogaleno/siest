@@ -13,6 +13,8 @@
  */
 class Supervtecnicos extends Controller{
     
+   public $name = 'supervtecnicos';
+            
    function __construct()
     {
         parent::__construct();
@@ -23,31 +25,99 @@ class Supervtecnicos extends Controller{
     
     function index()
     {   
-//       $livroModel = $this->loadModel('LivroModel');
-//       $livros = $livroModel->getAll();
+       $supervtecnicoModel = $this->loadModel('SupervtecnicoModel');
+       $superv_tecnicos = $supervtecnicoModel->getAll();
 //       
 //       $categoriaModel = $this->loadModel('CategoriaModel');
 //       $categorias = $categoriaModel->getAll();
 
        require 'application/views/_templates/header.php';
-       require 'application/views/professores/index.php';
+       require 'application/views/supervtecnicos/index.php';
+       require 'application/views/_templates/footer.php';  
+       //var_dump($_GET); die;
+    }
+    
+    function view($id = null)
+    {   
+       $supervtecnicoModel = $this->loadModel('SupervtecnicoModel');
+       $superv_tecnico = $supervtecnicoModel->get($id);
+//       
+//       $categoriaModel = $this->loadModel('CategoriaModel');
+//       $categorias = $categoriaModel->getAll();
+
+       require 'application/views/_templates/header.php';
+       require 'application/views/supervtecnicos/view.php';
        require 'application/views/_templates/footer.php';  
        //var_dump($_GET); die;
     }
     
     function add()
     {   
-//       $livroModel = $this->loadModel('LivroModel');
-//       $livros = $livroModel->getAll();
-//       
-//       $categoriaModel = $this->loadModel('CategoriaModel');
-//       $categorias = $categoriaModel->getAll();
-
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // load model, perform an action on the model
+            $superTecnicoModel = $this->loadModel('SupervtecnicoModel');
+            //print_r($_POST);die;
+            if ($superTecnicoModel->add($_POST)){
+                $this->setflash('Salvo com sucesso', array('class' => 'alert alert-success'));
+                 header('Location: '. URL . $this->name );
+                 exit;
+            }else{
+                $this->setflash('Erro ao salvar', array('class' => 'alert alert-error'));
+            }
+        } 
+        
+       $instituicaoModel = $this->loadModel('InstituicaoModel');
+       $instituicoes = $instituicaoModel->getAll();
+       
        require 'application/views/_templates/header.php';
-       require 'application/views/professores/add.php';
+       require 'application/views/supervtecnicos/add.php';
        require 'application/views/_templates/footer.php';  
        //var_dump($_GET); die;
     }
+    
+    function edit($id = null)
+    {   
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // load model, perform an action on the model
+            $superTecnicoModel = $this->loadModel('SupervtecnicoModel');
+            //print_r($_POST);die;
+            if ($superTecnicoModel->edit($_POST)){
+                $this->setflash('Salvo com sucesso', array('class' => 'alert alert-success'));
+                header('Location: '. URL . $this->name . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . $_POST['id']);
+                exit;
+            }else{
+                $this->setflash('Erro ao salvar', array('class' => 'alert alert-error'));
+            }
+        } 
+        
+       $instituicaoModel = $this->loadModel('InstituicaoModel');
+       $instituicoes = $instituicaoModel->getAll();
+       
+       $supervtecnicoModel = $this->loadModel('SupervtecnicoModel');
+       $superv_tecnico = $supervtecnicoModel->get($id);
+       
+       require 'application/views/_templates/header.php';
+       require 'application/views/supervtecnicos/edit.php';
+       require 'application/views/_templates/footer.php';  
+       //var_dump($_GET); die;
+    }
+    
+    function delete($id = null)
+    {    
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            // load model, perform an action on the model
+            $supervtecnicoModel = $this->loadModel('SupervtecnicoModel');
+
+            if ($supervtecnicoModel->delete($id)){
+                $this->setflash('Deletado com sucesso', array('class' => 'alert alert-success'));
+                header('Location: '. URL . $this->name);
+                exit;
+            }else{
+                $this->setflash('Erro ao excluir', array('class' => 'alert alert-error'));
+                header('Location: '. URL . $this->name);                
+            }
+        }
+    }  
     
     function searchAjax()
     { 

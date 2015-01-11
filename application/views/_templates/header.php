@@ -193,6 +193,16 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
+                                <i class="fa fa-building-o"></i> <span>Supervisores Técnicos</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="<?=URL?>supervtecnicos"><i class="fa fa-angle-double-right"></i> Listar</a></li>
+                                <li><a href="<?=URL?>supervtecnicos/add"><i class="fa fa-angle-double-right"></i> Cadastrar</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
                                 <i class="fa fa-certificate"></i> <span>Cursos</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
