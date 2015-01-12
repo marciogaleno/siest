@@ -72,7 +72,7 @@ class Application
             }
         } else {
             // invalid URL, so simply show home/index
-            require './application/controller/Home.php';
+            require './application/controller/home.php';
             $home = new Home();
             $home->index();
         }

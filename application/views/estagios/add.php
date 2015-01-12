@@ -44,11 +44,11 @@
                                         
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Data início</label>
-                                            <input type="telefone" name="data_inicio" class="form-control" id="exampleInputEmail1" placeholder="Data início">
+                                            <input type="date" name="data_inicio" class="form-control" id="exampleInputEmail1" placeholder="Data início">
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Data fim</label>
-                                            <input type="telefone" name="data_fim" class="form-control" id="exampleInputEmail1" placeholder="Data fim<">
+                                            <input type="date" name="data_fim" class="form-control" id="exampleInputEmail1" placeholder="Data fim">
                                         </div>
            
                                     </div><!-- /.box-body -->

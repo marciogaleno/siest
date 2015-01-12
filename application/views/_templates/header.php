@@ -178,7 +178,7 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-building-o"></i> <span>Supervisores Técnicos</span>
+                                <i class="fa  fa-male"></i> <span>Supervisores Técnicos</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
@@ -198,7 +198,7 @@
                         </li>
                         <li class="treeview">
                             <a href="#">
-                                <i class="fa fa-certificate"></i> <span>Usuários</span>
+                                <i class="fa fa-user"></i> <span>Usuários</span>
                                 <i class="fa fa-angle-left pull-right"></i>
                             </a>
                             <ul class="treeview-menu">
