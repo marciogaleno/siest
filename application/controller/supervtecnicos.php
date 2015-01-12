@@ -18,9 +18,7 @@ class Supervtecnicos extends Controller{
    function __construct()
     {
         parent::__construct();
-        
-        
-        
+        Auth::estaLogado();
     }  
     
     function index()

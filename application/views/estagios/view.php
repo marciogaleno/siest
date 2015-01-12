@@ -51,6 +51,7 @@
                                 <th>Data</th>
                                 <th>Horário</th>
                                 <th>Resumo</th>
+                                <th>Ação</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -62,6 +63,7 @@
                                             <td><?php echo date_format( new DateTime($visita['data']), "d/m/Y")?></td>
                                             <td><?=$visita['horario']?></td>
                                             <td><?=$visita['resumo']?></td>
+                                            <td><a href="<?=URL?>visitas/delete/<?=$visita['id']?>/<?=$estagio['id_estagio']?>" class="label label-danger delete">Deletar</a></td>
                                         </tr>
                             <?php
                                     endforeach;
@@ -104,6 +106,8 @@
     </div>   <!-- /.row -->
 </section><!-- /.content -->
 </aside><!-- /.right-side -->
+
+<?php include 'application/views/elements/deletemodal.php';?>
 
 <script type="text/javascript">
     $(function () {
@@ -168,6 +172,7 @@
                         "<td>" + $.datepicker.formatDate('dd/mm/yy', new Date(data.val()))+ "</td>" +
                         "<td>" + horario.val() + "</td>" +
                         "<td>" + resumo.val() + "</td>" +
+                        '<td><a href="' + <?php echo '"'. URL . '"'?> + 'visitas/delete/' + <?php echo "{$visita['id']}"?> + '/' + <?php echo "{$estagio['id_estagio']}"?> + '" class="label label-danger delete">Deletar</a></td>' +               
                         "</tr>");
                 dialog.dialog("close");
             }

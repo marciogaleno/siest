@@ -17,6 +17,7 @@ class Alunos extends Controller {
             
     function __construct() {
         parent::__construct();
+        Auth::estaLogado();
     }
 
     function view($id) 

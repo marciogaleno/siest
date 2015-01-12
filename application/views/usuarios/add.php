@@ -9,25 +9,23 @@
                                     <h3 class="box-title">Cadastrar usuário</h3>
                                 </div><!-- /.box-header -->
                                 <!-- form start -->
-                                <form role="form">
+                                <form role="form" action="add" method="post">
                                     <div class="box-body">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">Nome</label>
-                                            <input type="nome" class="form-control" id="exampleInputEmail1" placeholder="Nome">
+                                            <input type="text" name="nome" class="form-control" id="exampleInputEmail1" placeholder="Nome">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputPassword1">Cordenador</label>
-                                            <select class="form-control">
-                                                <option>--</option>
-                                                <option>option 2</option>
-                                                <option>option 3</option>
-                                                <option>option 4</option>
-                                                <option>option 5</option>
-                                            </select>
+                                            <label for="exampleInputEmail1">E-mail</label>
+                                            <input type="text" name="email" class="form-control" id="exampleInputEmail1" placeholder="E-mail">
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleInputEmail1">Categoria</label>
-                                            <input type="telefone" class="form-control" id="exampleInputEmail1" placeholder="Categoria">
+                                            <label for="exampleInputEmail1">Senha</label>
+                                            <input type="password" name="senha" class="form-control" id="exampleInputEmail1" placeholder="Senha">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">Tipo usuário</label>
+                                            <input type="text" name="tipo_user" class="form-control" id="exampleInputEmail1" placeholder="Categoria">
                                         </div>
            
                                     </div><!-- /.box-body -->

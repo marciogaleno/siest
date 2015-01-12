@@ -31,6 +31,7 @@ class Login extends Controller{
         require 'application/views/login/index.php';
         require 'application/views/_templates/footer-login.php';  
     }
+    
 
     /**
      * The login action, when you do login/login

@@ -13,39 +13,82 @@
  */
 class Usuarios extends Controller{
     
+   public $name = 'usuarios';
+    
    function __construct()
     {
         parent::__construct();
-        
-        
-        
+        Auth::estaLogado();
     }  
     
     function index()
-    {   
-//       $livroModel = $this->loadModel('LivroModel');
-//       $livros = $livroModel->getAll();
-//       
-//       $categoriaModel = $this->loadModel('CategoriaModel');
-//       $categorias = $categoriaModel->getAll();
+    {
 
-       require 'application/views/_templates/header.php';
-       require 'application/views/usuarios/index.php';
-       require 'application/views/_templates/footer.php';  
-       //var_dump($_GET); die;
+        $loginModel = $this->loadModel('UsuarioModel');
+        $usuarios = $loginModel->getAll();
+        // show the view
+        require 'application/views/_templates/header.php';
+        require 'application/views/usuarios/index.php';
+        require 'application/views/_templates/footer.php';  
     }
     
     function add()
     {   
-//       $livroModel = $this->loadModel('LivroModel');
-//       $livros = $livroModel->getAll();
-//       
-//       $categoriaModel = $this->loadModel('CategoriaModel');
-//       $categorias = $categoriaModel->getAll();
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // load model, perform an action on the model
+            $usuarioModel = $this->loadModel('UsuarioModel');
+            if ($usuarioModel->add()){
+                $this->setflash('Salvo com sucesso', array('class' => 'alert alert-success'));
+                header('Location: '. URL . $this->name);
+                exit;
+            }else{
+                $this->setflash('Erro ao salvar', array('class' => 'alert alert-error'));
+            }
+        } 
+        
+        
+        require 'application/views/_templates/header.php';
+        require 'application/views/usuarios/add.php';
+        require 'application/views/_templates/footer.php'; 
+    }
+    
+    function edit($id= null)
+    {   
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            // load model, perform an action on the model
+            $usuarioModel = $this->loadModel('UsuarioModel');
+            
+            if ($usuarioModel->edit($id)){
+                $this->setflash('Salvo com sucesso', array('class' => 'alert alert-success'));
+                 header('Location: '. URL . $this->name . DIRECTORY_SEPARATOR . 'view' . DIRECTORY_SEPARATOR . $_POST['id_professor']);
+                 exit;
+            }else{
+                $this->setflash('Erro ao salvar', array('class' => 'alert alert-error'));
+            }
+        } 
+        
+        $loginModel = $this->loadModel('UsuarioModel');
+        $usuario = $loginModel->get($id);        
+        
+        require 'application/views/_templates/header.php';
+        require 'application/views/usuarios/edit.php';
+        require 'application/views/_templates/footer.php'; 
+    }
+    
+    function delete($id = null)
+    {    
+        if ($_SERVER['REQUEST_METHOD'] == 'GET') {
+            // load model, perform an action on the model
+            $usuarioModel = $this->loadModel('UsuarioModel');  
 
-       require 'application/views/_templates/header.php';
-       require 'application/views/usuarios/add.php';
-       require 'application/views/_templates/footer.php';  
-       //var_dump($_GET); die;
+            if ($usuarioModel->delete($id)){
+                $this->setflash('Deletado com sucesso', array('class' => 'alert alert-success'));
+                header('Location: '. URL . $this->name);
+                exit;
+            }else{
+                $this->setflash('Erro ao excluir', array('class' => 'alert alert-error'));
+                header('Location: '. URL . $this->name);                
+            }
+        }
     }
 }

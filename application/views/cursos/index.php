@@ -17,17 +17,20 @@
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-hover">
                                         <tr>
-                                            <th>ID</th>
                                             <th>Nome</th>
                                             <th>Coordenador</th>
-                                            <th>Categoria</th>
+                                            <th colspan="3">Categoria</th>
                                         </tr>
+                                        <?php foreach ($cursos as $curso):?>
                                         <tr>
-                                            <td>183</td>
-                                            <td>Sistemas de Informação</td>
-                                            <td>Mauro</td>
-                                            <td>Superior</td>
+                                            <td><?=$curso['nome']?></td>
+                                            <td><?=$curso['nome_coordenador']?></td>
+                                            <td><?=$curso['categoria']?></td>
+                                            <td><a href="<?=URL?>cursos/edit/<?=$curso['id_curso']?>" class="label label-primary">Editar</a></td>
+                                            <td><a href="<?=URL?>cursos/view/<?=$curso['id_curso']?>" class="label label-info">Visualizar</a></td>
+                                            <td><a href="<?=URL?>cursos/delete/<?=$curso['id_curso']?>" class="label label-danger delete">Deletar</a></td>
                                         </tr>
+                                        <?php endforeach;?>
                                     </table>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
@@ -35,3 +38,5 @@
                     </div>
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
+            
+<?php include 'application/views/elements/deletemodal.php';?>

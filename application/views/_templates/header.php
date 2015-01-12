@@ -59,7 +59,7 @@
     <body class="skin-blue">
         <!-- header logo: style can be found in header.less -->
         <header class="header">
-            <a href="index.html" class="logo">
+            <a href="<?=URL?>" class="logo">
                 <!-- Add the class icon to your logo image or logo icon to add the margining -->
                 SIEST
             </a>
@@ -78,36 +78,21 @@
                         <li class="dropdown user user-menu">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                                 <i class="glyphicon glyphicon-user"></i>
-                                <span>Márcio Vennan<i class="caret"></i></span>
+                                <span><?=$_SESSION['usuario_nome']?><i class="caret"></i></span>
                             </a>
                             <ul class="dropdown-menu">
                                 <!-- User image -->
                                 <li class="user-header bg-light-blue">
-                                    <img src="img/avatar3.png" class="img-circle" alt="User Image" />
                                     <p>
-                                        Jane Doe - Web Developer
-                                        <small>Member since Nov. 2012</small>
+                                        <?php echo $_SESSION['usuario_nome'] . ' - ' . $_SESSION['tipo_user'] ?>
                                     </p>
                                 </li>
-                                <!-- Menu Body -->
-                                <li class="user-body">
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Followers</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Sales</a>
-                                    </div>
-                                    <div class="col-xs-4 text-center">
-                                        <a href="#">Friends</a>
-                                    </div>
-                                </li>
-                                <!-- Menu Footer-->
                                 <li class="user-footer">
                                     <div class="pull-left">
-                                        <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                        <a href="#" class="btn btn-default btn-flat">Perfil</a>
                                     </div>
                                     <div class="pull-right">
-                                        <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                                        <a href="<?=URL?>/login/logout" class="btn btn-default btn-flat">Sair</a>
                                     </div>
                                 </li>
                             </ul>
@@ -208,7 +193,17 @@
                             </a>
                             <ul class="treeview-menu">
                                 <li><a href="<?=URL?>cursos"><i class="fa fa-angle-double-right"></i> Listar</a></li>
-                                <li><a href="<?=URL?>cursos"><i class="fa fa-angle-double-right"></i> Cadastrar</a></li>
+                                <li><a href="<?=URL?>cursos/add"><i class="fa fa-angle-double-right"></i> Cadastrar</a></li>
+                            </ul>
+                        </li>
+                        <li class="treeview">
+                            <a href="#">
+                                <i class="fa fa-certificate"></i> <span>Usuários</span>
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </a>
+                            <ul class="treeview-menu">
+                                <li><a href="<?=URL?>usuarios/"><i class="fa fa-angle-double-right"></i> Listar</a></li>
+                                <li><a href="<?=URL?>usuarios/add"><i class="fa fa-angle-double-right"></i> Cadastrar</a></li>
                             </ul>
                         </li>
                     </ul>

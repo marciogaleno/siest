@@ -26,34 +26,42 @@ class CursoModel
      * adicona um Categoria
      * @param srray $data
      */
-    public function add($categoria)
+    public function add($curso)
     {
-        $sql = "INSERT INTO categoria SET nome = :nome";
+        $sql = "INSERT INTO curso SET "
+             . "nome = :nome, "
+             . "categoria = :categoria,"
+             . "coord_estagio_id = :coord_estagio_id";
         
         $query = $this->db->prepare($sql); 
         
-        $categoria['nome'] = $categoria['nome'];
-
-        
-        if ($query->execute($categoria)){
+        $query->bindValue(':nome', $curso['nome'], PDO::PARAM_STR);
+        $query->bindValue(':categoria', $curso['categoria'], PDO::PARAM_STR);
+        $query->bindValue(':coord_estagio_id', $curso['coord_estagio_id'], PDO::PARAM_INT);
+    
+        if ($query->execute($curso)){
             return true;
         } 
         
         return false;
     }
     
-    public function edit($categoria)
+    public function edit($curso)
     {
-        //var_dump($categoria); die;
-      //echo $categoria['idCategoria']; die;
-        $sql = "UPDATE categoria SET "
-                . "nome = :nome "
-                . "WHERE idCategoria = :idCategoria";
+        $sql = "UPDATE curso SET "
+             . "nome = :nome, "
+             . "categoria = :categoria,"
+             . "coord_estagio_id = :coord_estagio_id "
+             . "WHERE id_curso = :id_curso";
                 
         $query = $this->db->prepare($sql); 
-
-        $query->bindValue(':nome', $categoria['nome'], PDO::PARAM_STR);
-        $query->bindValue(':idCategoria', (int)$categoria['idCategoria'], PDO::PARAM_INT);
+        
+        //print_r($curso);die;
+        $query->bindValue(':nome', $curso['nome'], PDO::PARAM_STR);
+        $query->bindValue(':categoria', $curso['categoria'], PDO::PARAM_STR);
+        $query->bindValue(':coord_estagio_id', $curso['coord_estagio_id'], PDO::PARAM_INT);
+        $query->bindValue(':id_curso', $curso['id_curso'], PDO::PARAM_INT);
+    
         
          if ($query->execute()){
             return true;
@@ -62,24 +70,31 @@ class CursoModel
         return false;
     }
     
-    public function get($id)
+    public function get($id = null)
     {
-        $sql = "SELECT * FROM categoria as l WHERE l.idCategoria={$id}";
+        $sql = "SELECT c.*, p.id_professor, p.nome as nome_professor FROM curso as c "
+                . "INNER JOIN professor as p ON p.id_professor = c.coord_estagio_id "
+                . "WHERE id_curso = :id_curso ";
+        
         $query = $this->db->prepare($sql);
-             //var_dump($livros); die;
+
+        $query->bindValue(':id_curso', $id, PDO::PARAM_INT);
+
         $query->execute();  
         
-        $categoria = $query->fetchAll();
+        $curso = $query->fetchAll();
         
-        return reset($categoria);
+        return reset($curso);
     }
     
     public function delete($id)
     {
-        $sql = "DELETE FROM categoria WHERE idCategoria={$id}";
+        $sql = "DELETE FROM curso WHERE id_curso = :id_curso";
   
         $query = $this->db->prepare($sql);
-             //var_dump($livros); die;
+       
+        $query->bindValue(':id_curso', $id, PDO::PARAM_INT);
+        
         $query->execute();  
         
         return $query->fetchAll();
@@ -88,7 +103,10 @@ class CursoModel
             
     public function getAll()
     {
-        $sql = 'SELECT * FROM curso';
+        $sql = "SELECT c.*, p.nome as nome_coordenador FROM curso as c "
+                . "INNER JOIN professor as p ON p.id_professor = c.coord_estagio_id "
+                . "WHERE 1 = 1 ";
+        
         $query = $this->db->prepare($sql);
              //var_dump($livros); die;
         $query->execute();

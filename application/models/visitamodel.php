@@ -115,10 +115,12 @@ class VisitaModel {
     
     public function delete($id)
     {
-        $sql = "DELETE FROM livro WHERE idLivro={$id}";
+        $sql = "DELETE FROM visita WHERE id = :id";
   
         $query = $this->db->prepare($sql);
-             //var_dump($visitas); die;
+        
+         $query->bindValue(':id', $id);
+         
         if ($query->execute()){
             return true;
         }  

@@ -26,6 +26,7 @@ class LoginModel {
      * Users who login with Facebook etc. are handled with loginWithFacebook()
      * @return bool success state
      */
+    
     public function login()
     {
 //        // we do negative-first checks here
